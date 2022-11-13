@@ -1,48 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Form validation</title>
 </head>
+
 <body>
     <style>
-    input[type=text]{
-        outline: none;
-        border: black solid 1px;
-        border-radius: 2px;
-        margin: 0;
-    }
-    input[type=text]:valid{
+        input[type=text] {
+            outline: none;
+            border: black solid 1px;
+            border-radius: 2px;
+            margin: 0;
+        }
+
+        input[type=text]:valid {
             /* : rgb(255, 0, 0); */
             border: rgb(115, 255, 0) solid 2px;
         }
-        
-    </style>
 
-    <form action="#" method="dialog"  ></form>
-        <input spellcheck="true" type="text" name="dummy" maxlength="12"  minlength="10" required autocomplete="off">
-        
+        input[type=text]:invalid {
+            /* : rgb(255, 0, 0); */
+            border: rgb(255, 0, 0) solid 2px;
+        }
+    </style>
+    <span>Form validation usimg css</span>
+    <form action="#" method="get">
+        <input spellcheck="true" type="text" name="dummy" maxlength="12" minlength="10" required autocomplete="off">
+
         <input type="submit" value="Submit">
     </form>
-    <hr/>
+    <hr />
     <button id="popuptrigger">Popup dialog</button>
-    <dialog id="dialog" >
-  <p>dialog</p>
-  <form method="dialog" >
-    <span>This is a basic dialog</span>
-    <button>OK</button>
-  </form>
-</dialog>
-<script>
-    var dialog = document.getElementById("dialog")
-    
+    <dialog id="dialog">
+        <p>dialog</p>
+        <form method="dialog">
+            <span>This is a basic dialog</span>
+            <button>OK</button>
+        </form>
+    </dialog>
+    <script>
+        var dialog = document.getElementById("dialog")
 
-    document.getElementById("popuptrigger").addEventListener('click',()=>{
-        dialog.showModal()
-    })
-    
-</script>
+
+        document.getElementById("popuptrigger").addEventListener('click', () => {
+            dialog.showModal()
+        })
+
+    </script>
+    <hr>
+    <span>Form validation using JavaScript</span>
+    <br><br>
+    <form action="#">
+        <span>passsword validation</span>
+        <input type="password" name="password" id="pass">
+        <div style="margin-left: 15px;">
+            <span>Password must contain : </span><br>
+            <span id="upper">Atleast One Uppercase</span><br>
+            <span id="lower">Atleast One Lowercase</span><br>
+            <span id="special">Atleast One Special character</span><br>
+            <span id="num">Atleast One number</span><br>
+            <span id="8char">Atleast 8 characters</span><br>
+
+            <!-- "^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$" -->
+        </div>
+    </form>
+    <script>
+        var passsword = document.getElementById("pass")
+        var upper = document.getElementById("upper")
+        var lower=document.getElementById("lower")
+        var special = document.getElementById("special")
+        var num = document.getElementById("num")
+        var chars = document.getElementById("8char")
+        passsword.addEventListener('input', (event) => {
+            
+            let value = event.target.value
+            if (value.length > 0) {
+                upper.style.color = "red"
+                lower.style.color = "red"
+                special.style.color = "red"
+                num.style.color = "red"
+                chars.style.color = "red"
+                if (value.match("[A-Za-z\\d@$!%*?&]{8,}$")){
+                    chars.style.color = "green"
+                }
+                else{
+                    chars.style.color = "red"
+                }
+                if (value.match("(?=.*[@$!%*?&])")){
+                    special.style.color = "green"
+                }
+                else{
+                    special.style.color = "red"
+                }
+               
+                if (value.match("(?=.*\\d)")){
+                    num.style.color = "green"
+                }
+                else{
+                    num.style.color = "red"
+                }
+                if (value.match("(?=.*[A-Z])")){
+                    upper.style.color = "green"
+                }
+                else{
+                    upper.style.color = "red"
+                }
+                if (value.match("(?=.*[a-z])")){
+                    lower.style.color = "green"
+                }
+                else{
+                    lower.style.color = "red"
+                }
+                
+
+
+
+            }
+            else {
+                upper.style.color = "black"
+                lower.style.color = "black"
+                special.style.color = "black"
+                num.style.color = "black"
+                chars.style.color = "black"
+            }
+        })
+
+    </script>
 </body>
+
 </html>
