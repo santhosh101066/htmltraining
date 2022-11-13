@@ -71,12 +71,11 @@
     <script>
         var passsword = document.getElementById("pass")
         var upper = document.getElementById("upper")
-        var lower=document.getElementById("lower")
+        var lower = document.getElementById("lower")
         var special = document.getElementById("special")
         var num = document.getElementById("num")
         var chars = document.getElementById("8char")
         passsword.addEventListener('input', (event) => {
-            
             let value = event.target.value
             if (value.length > 0) {
                 upper.style.color = "red"
@@ -84,35 +83,35 @@
                 special.style.color = "red"
                 num.style.color = "red"
                 chars.style.color = "red"
-                if (value.match("[A-Za-z\\d@$!%*?&]{8,}$")){
+                if (value.match("[A-Za-z\\d@$!%*?&]{8,}$")) {
                     chars.style.color = "green"
                 }
-                else{
+                else {
                     chars.style.color = "red"
                 }
-                if (value.match("(?=.*[@$!%*?&])")){
+                if (value.match("(?=.*[@$!%*?&])")) {
                     special.style.color = "green"
                 }
-                else{
+                else {
                     special.style.color = "red"
                 }
-               
-                if (value.match("(?=.*\\d)")){
+
+                if (value.match("(?=.*\\d)")) {
                     num.style.color = "green"
                 }
-                else{
+                else {
                     num.style.color = "red"
                 }
-                if (value.match("(?=.*[A-Z])")){
+                if (value.match("(?=.*[A-Z])")) {
                     upper.style.color = "green"
                 }
-                else{
+                else {
                     upper.style.color = "red"
                 }
-                if (value.match("(?=.*[a-z])")){
+                if (value.match("(?=.*[a-z])")) {
                     lower.style.color = "green"
                 }
-                else{
+                else {
                     lower.style.color = "red"
                 }
             }
@@ -126,6 +125,44 @@
         })
 
     </script>
-</body>
+    <br><br><br>
+    confirm password :
+    <input type="password" name="confirm" id="confirm">
+    <span id="error" style="color: red;"></span>
+    <script>
+        var confirmpass = document.getElementById("confirm")
+        var error = document.getElementById("error")
+        confirmpass.addEventListener('input', (event) => {
+            if (confirmpass.value.length > 0) {
+                if (event.target.value == passsword.value) {
+                    error.innerText = "Password Matched"
+                    error.style.color = "green"
+                }
+                else {
+                    error.innerText = "Password doesn't Match"
+                    error.style.color = "red"
+                }
+            }
+            else {
+                error.innerText = ""
+            }
+        })
 
+        passsword.addEventListener('input', (event) => {
+            if (confirmpass.value.length > 0) {
+                if (event.target.value == confirmpass.value) {
+                    error.innerText = "Password Matched"
+                    error.style.color = "green"
+                }
+                else {
+                    error.innerText = "Password doesn't Match"
+                    error.style.color = "red"
+                }
+            }
+            else {
+                error.innerText = ""
+            }
+        })
+    </script>
+</body>
 </html>
