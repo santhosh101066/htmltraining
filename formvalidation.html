@@ -20,13 +20,29 @@
         }
         
     </style>
-    <form action="#" >
-        <input type="text" name="dummy" maxlength="12"  minlength="10" required autocomplete="off">
-        <input type="color" name="asdfg" id="">
+
+    <form action="#" method="dialog"  ></form>
+        <input spellcheck="true" type="text" name="dummy" maxlength="12"  minlength="10" required autocomplete="off">
+        
         <input type="submit" value="Submit">
-        <input type="">
     </form>
+    <hr/>
+    <button id="popuptrigger">Popup dialog</button>
+    <dialog id="dialog" >
+  <p>dialog</p>
+  <form method="dialog" >
+    <span>This is a basic dialog</span>
+    <button>OK</button>
+  </form>
+</dialog>
+<script>
+    var dialog = document.getElementById("dialog")
     
+
+    document.getElementById("popuptrigger").addEventListener('click',()=>{
+        dialog.showModal()
+    })
     
+</script>
 </body>
 </html>
