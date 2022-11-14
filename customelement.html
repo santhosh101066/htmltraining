@@ -7,6 +7,27 @@
     <title>Document</title>
 </head>
 <body>
-    
+    custom element 
+    <script>
+        class Count extends HTMLElement{
+            constructor(){
+                super()
+                // alert(this.innerText)
+                
+                setTimeout(()=>{ console.log(this.dataset.id); 
+                document.getElementById(this.dataset.id).addEventListener('input',(event)=>{
+                    let value=event.target.value
+                        this.innerText='Letter count : '+value.length
+                })
+            },100)  
+            }
+        }
+        
+        customElements.define('count-new',Count)
+    </script>
+    <div>
+        <input id="count" type="text">
+    </div>
+    <count-new data-id="count">jothika</count-new>
 </body>
 </html>
