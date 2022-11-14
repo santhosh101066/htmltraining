@@ -18,7 +18,8 @@
                 document.getElementById(this.dataset.id).addEventListener('input',(event)=>{
                     let value=event.target.value
                         this.innerText='Letter count : '+value.length
-                })
+                        
+                         })
             },100)  
             }
         }
@@ -28,7 +29,7 @@
     <div>
         <input id="count" type="text">
     </div>
-    <count-new is="count" data-id="count">Count will shown here</count-new>
+    <count-new  data-id="count">Count will shown here <button>Okay</Samp></button></count-new>
 
     <hr>
 </body>
