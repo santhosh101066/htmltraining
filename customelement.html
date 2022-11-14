@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    custom element 
+    <span>Custom Element</span>  
     <script>
         class Count extends HTMLElement{
             constructor(){
@@ -28,6 +28,8 @@
     <div>
         <input id="count" type="text">
     </div>
-    <count-new data-id="count">jothika</count-new>
+    <count-new is="count" data-id="count">Count will shown here</count-new>
+
+    <hr>
 </body>
 </html>
