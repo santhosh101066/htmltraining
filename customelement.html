@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Custom element</title>
 </head>
 <body>
     <span>Custom Element</span>  
@@ -13,7 +13,7 @@
             constructor(){
                 super()
                 // alert(this.innerText)
-                
+               
                 setTimeout(()=>{ console.log(this.dataset.id); 
                 document.getElementById(this.dataset.id).addEventListener('input',(event)=>{
                     let value=event.target.value
