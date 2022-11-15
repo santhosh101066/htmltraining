@@ -1,12 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Multimedia</title>
 </head>
+
 <body>
-    
+    <div style="display: block;">
+        <span>Audio with controller</span><br>
+        <audio controls >
+            <source src="32505839.mp3" type="audio/mp3">
+        </audio>
+    </div>
+
+    <div>
+        <span>Audio Without controller</span>
+        <audio id="player" >
+            <source src="32505839.mp3" type="audio/mp3">
+        </audio>
+        <span style="width:100px ;" id="info"></span>
+        <button id="play">Play/Pause</button>
+        <span id="duration"></span><br>
+        <input type="range" min="0" value="0" id="seek" >
+       
+        <script>
+            var player = document.getElementById('player')
+            var info = document.getElementById('info')
+            var seek = document.getElementById('seek')
+            seek.min=0
+
+            seek.addEventListener('input',()=>{
+                player.currentTime=seek.value
+            })
+
+            player.addEventListener('playing',()=>{
+                info.innerText = "Playing"
+                info.style.color = "green"
+            })
+            setInterval(()=>{
+                        document.getElementById('duration').innerText=player.currentTime +" / "+player.duration
+                        seek.max=player.duration
+                        seek.value=player.currentTime
+                },1000)
+            player.addEventListener('pause',()=>{
+                info.innerText = "Paused"
+                info.style.color = "red"
+            })          
+            document.getElementById('play').addEventListener('click', () => {
+                if (player.paused) {
+                    player.play()
+                }
+                else {
+                    player.pause()
+                }
+            })
+        </script>
+    </div>
+    <br><br>
+    <div>
+        <embed  src="file.txt" >
+        <iframe src="flower.mp4" ></iframe>
+            
+    </div>
 </body>
+
 </html>
