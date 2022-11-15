@@ -10,6 +10,7 @@
     <div style="display:flex ;">
         <form action="#" style="display:flex ;flex-flow: column ;">
             Button <input type="button" value="Button">
+
             checkbox
             <input type="checkbox" >
             color picker
@@ -23,7 +24,7 @@
             file
             <input type="file" name="" id="">
             image
-            <input type="image" src="image-planet.webp" alt="">
+            <!-- <input type="image" src="image-planet.webp" alt=""> -->
             Hidden
             <input type="hidden" name="">
             Password
@@ -31,7 +32,7 @@
             radio
             <input type="radio" name="" id="">
             range
-            <input type="range" name="" id="">
+            <input type="range" f name="" id="">
             reset
             <input type="reset" value="reset">
             search
@@ -48,6 +49,16 @@
             <input type="week" name="" id="">
             date and time local
             <input type="datetime-local" name="" id="">
+            <span id="width"></span>
+            <script>
+                window.addEventListener('s',()=>{
+                    console.log("sdfgh");
+                })
+                var w = window.innerWidth;
+                var h = window.innerHeight;
+                document.getElementById("width").innerText=w+" "+h
+
+            </script>
         </form>
     </div>
 </body>
