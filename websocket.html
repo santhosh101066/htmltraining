@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Socket</title>
+</head>
+<body>
+    <script>
+        var connection
+       
+        function connect(){
+            connection=new WebSocket('ws://localhost:1234')
+        }
+        function send(){
+            if(connection.readyState!= WebSocket.CLOSED) {
+                const input=document.getElementById('input').value
+                const display=document.getElementById('display')
+            console.log(connection.readyState);
+            connection.send(input)
+            connection.onmessage=(data)=>{
+                console.log(data);
+                display.innerText=data.data
+            }
+            
+            }
+            else {
+                if(confirm('Cannot connect to WebSocket confirm to reconnect')){
+                    connect()
+                    
+                }
+            }
+            
+        }
+        
+        if("WebSocket" in window){
+            connect()
+        }
+        else{
+            alert("browser not supported")
+            window.location.href='/'
+        }
+
+    </script>
+    <input id="input" type="text">
+    <button onclick="send()">send</button><br>
+    <span id="display"></span>
+
+</body>
+</html>
