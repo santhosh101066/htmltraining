@@ -13,9 +13,9 @@
 
     <script>
         caches.open('ogg')
-        .then((cache)=>cache.addAll(["/","file.txt",'32505839.mp3']))
+        .then((cache)=>cache.addAll(["/","file.txt",'32505839.mp3','multimedia.html','flower.mp4']))
         .catch((er)=>console.log(er))
-        console.log(caches.match());
+        console.log(caches.match('ogg').then(data=>{console.log(data);}));
     </script>
 </body>
 
