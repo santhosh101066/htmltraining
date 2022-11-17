@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geolocation</title>
+</head>
+
+<body>
+    <span id="watch"></span><br><br>
+    <button onclick="locationgetter()">Get location</button>
+    <h2 id="get" ></h2>
+    <script>
+        const locationwatcher = document.getElementById('watch')
+        const getlocation = document.getElementById('get')
+        function locationgetter(){
+            navigator.geolocation.watchPosition((locate)=>{getlocation.innerText=`Get position -> Longitude : ${locate.coords.longitude} , Latitude : ${locate.coords.latitude}`},(err) => { getlocation.innerText = "Error : " + err.message }, { enableHighAccuracy: true })
+        }
+        if ("geolocation" in navigator) {
+            navigator.geolocation.watchPosition((locate) => { locationwatcher.innerText = `Watch position -> Longitude : ${locate.coords.longitude} , Latitude : ${locate.coords.latitude}` }, (err) => { locationwatcher.innerText = "Error : " + err.message }, { enableHighAccuracy: true })
+        }
+        else {
+            alert("Browser not supported")
+            window.location.href = '/'
+        }
+    </script>
+
+</body>
+
+</html>

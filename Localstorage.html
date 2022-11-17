@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web storeage</title>
+</head>
+<body>
+    <hr>
+    <style>
+        table,tr,th,td{
+            border: 2px solid black;
+            border-collapse: collapse;
+            padding: 10px;
+        }
+    </style>
+    <input type="text" placeholder="Enter any value to save in Web storage" size="30" id="input"> <br><br>
+    <table>
+        <tbody>
+            <tr>
+                <th>
+                    Value stored in session:
+                </th>
+                <td id="session">Loading..</td>
+            </tr>
+            <tr>
+                <th>
+                    Value stored in localstorage:
+                </th>
+                <td id="local">Loading..</td>
+            </tr>
+        </tbody>
+    </table><br>
+    <button onclick="sessionStorage.clear();localStorage.clear()"> Clear all</button>
+    <script>
+        const input=document.getElementById('input')
+        const local=document.getElementById('local')
+        const session=document.getElementById('session')
+        
+        input.oninput=(event)=>{
+            sessionStorage.setItem('sample',event.target.value)
+            localStorage.setItem('localsample',event.target.value)
+            console.log(localStorage);
+        }
+        setInterval(()=>{
+           const session_data=sessionStorage.getItem('sample')
+           const local_data=localStorage.getItem('localsample')
+           
+            if(session_data){
+                session.innerText=session_data
+            }
+            else{
+                session.innerText="Empty"
+            }
+            if(local_data){
+                local.innerText=local_data
+            }
+            else{
+                local.innerText="Empty"
+            }
+        },1000)
+    </script>
+</body>
+</html>
