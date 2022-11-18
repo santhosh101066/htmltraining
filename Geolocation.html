@@ -16,7 +16,7 @@
         const locationwatcher = document.getElementById('watch')
         const getlocation = document.getElementById('get')
         function locationgetter(){
-            navigator.geolocation.watchPosition((locate)=>{getlocation.innerText=`Get position -> Longitude : ${locate.coords.longitude} , Latitude : ${locate.coords.latitude}`},(err) => { getlocation.innerText = "Error : " + err.message }, { enableHighAccuracy: true })
+            navigator.geolocation.getCurrentPosition((locate)=>{getlocation.innerText=`Get position -> Longitude : ${locate.coords.longitude} , Latitude : ${locate.coords.latitude}`},(err) => { getlocation.innerText = "Error : " + err.message }, { enableHighAccuracy: true })
         }
         if ("geolocation" in navigator) {
             navigator.geolocation.watchPosition((locate) => { locationwatcher.innerText = `Watch position -> Longitude : ${locate.coords.longitude} , Latitude : ${locate.coords.latitude}` }, (err) => { locationwatcher.innerText = "Error : " + err.message }, { enableHighAccuracy: true })

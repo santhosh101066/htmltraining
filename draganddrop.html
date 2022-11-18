@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drag and drop</title>
+</head>
+<body>
+    <style>
+        div{
+            width: 400px;
+            height: 300px;
+            border: black 1px solid;
+        }
+    </style>
+    files->
+    <pre id="output"></pre>
+    <div ondrop="event.preventDefault();event.stopPropagation();filesare(event)" ondragstart="event.preventDefault();event.stopPropagation();"  ondragover="event.preventDefault();event.stopPropagation();">
+        <span style=" display:block;width:max-content; margin: auto;">Drop files here</span>
+    </div>
+    <script>
+     function filesare(event){
+        var file=event.dataTransfer.files
+        var names=''
+        for (let index = 0; index < file.length; index++) {
+            // console.log(file[index]);
+            names+= file[index].name+'\n'
+            
+        }
+         document.getElementById('output').innerText=names
+        
+        }
+    </script>
+    <img src="image-planet.webp" draggable="false" alt="">
+</body>
+</html>

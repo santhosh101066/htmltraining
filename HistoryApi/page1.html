@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page 1</title>
+</head>
+<body>
+    page 1
+    <button id="back">Back</button>
+    <input type="text" id="state"> 
+    <button id="goto">Goto Page 2</button>
+    <a href="page2.html"><button>Goto page 2 without </button></a>  
+    <button id="next">Next</button>
+    <script>
+        document.getElementById('back').onclick=()=>{
+            window.history.back()
+        }
+        document.getElementById('goto').onclick=()=>{
+            window.history.pushState({data:document.getElementById('state').value},'','page2.html')
+            window.history.go()
+        }
+        document.getElementById('next').onclick=()=>{
+            window.history.go(1)
+            
+        }
+    </script>
+
+</body>
+</html>

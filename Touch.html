@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="canvas" style="height: 100%; width: 100%; border:1px black solid ;">Browser dosn't supported</canvas>
+    <input type="color" id="col">
+    <script>
+        var canva = document.getElementById('canvas')
+        var ctx = canva.getContext('2d')
+        var color=document.getElementById('col')
+
+        window.addEventListener('touchstart', (event) => {
+            console.log(ctx);
+            ctx.strokeStyle=color.value;
+            ctx.moveTo(event.targetTouches[0].clientX-20, event.targetTouches[0].clientY-20)
+
+            // ctx.lineTo()
+            ctx.stroke()
+        })
+        window.addEventListener('touchmove', (event) => {
+
+            // ctx.moveTo(event.targetTouches[0].clientX, event.targetTouches[0].clientY)
+            ctx.lineTo(event.targetTouches[0].clientX-20, event.targetTouches[0].clientY-20)
+            ctx.stroke()
+        })
+    </script>
+</body>
+
+</html>
