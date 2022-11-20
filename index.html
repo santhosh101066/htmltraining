@@ -42,7 +42,7 @@
 
     <script>
         if(navigator.serviceWorker){
-            navigator.serviceWorker.register('/sw.js').then(()=>console.log("Sucessfully registered"))
+            navigator.serviceWorker.register('sw.js').then(()=>console.log("Sucessfully registered"))
         }
         else{
             console.log("Service worker not supported");
