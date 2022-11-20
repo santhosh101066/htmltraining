@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event</title>
+</head>
+<body>
+    <h1>Message from server will be recived here</h1>
+    Message is : 
+    <span id="message"></span>
+    <script>
+        const getevent= new EventSource('http://localhost:4000/event')
+        getevent.addEventListener('message',(ev)=>{
+            document.getElementById('message').innerText=ev.data
+        })
+        
+      
+    </script>
+    
+</body>
+</html>
