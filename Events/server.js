@@ -18,9 +18,9 @@ let count=0
 
 app.get('/event',(request,response)=>{
     response.setHeader('Content-Type','text/event-stream')
+    response.setHeader('Access-Control-Allow-Origin','*')
     response.setHeader('connection','keep-alive')
     response.setHeader('Cache-Control','no-cache')
-    response.setHeader('Access-Control-Allow-Origin','*')
     response.status(200)
 
 //     response.writeHead(200,{'Content-Type':'text/event-stream',
