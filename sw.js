@@ -13,9 +13,9 @@
 self.addEventListener('fetch', (event) => {
     let path= new URL(event.request.url).pathname
     let host= new URL(event.request.url).hostname
+    let pagehost=  new URL(event.request.referrer).hostname
     console.log(path);
-    if(event.request.referrer==host){
-
+    if(host==pagehost){
         const run=async ()=>{
             const cache= await fetch(event.request).catch(err=> caches.match(path))
             if (cache) return cache
