@@ -12,11 +12,10 @@
 
 self.addEventListener('fetch', (event) => {
     let path= new URL(event.request.url).pathname
-    let host= new URL(event.request.url).hostname
-    console.log(event.request);
-    
+    let host= new URL(event.request.url).host
+    console.log(host);
     console.log(path);
-    if('http://localhost:5501/'==host){
+    if('127.0.0.1:5501'==host){
         const run=async ()=>{
             const cache= await fetch(event.request).catch(err=> caches.match(path))
             if (cache) return cache
